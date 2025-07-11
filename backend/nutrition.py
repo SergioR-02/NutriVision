@@ -3,6 +3,25 @@ Nutritional database and utility functions
 """
 from typing import Dict, Any
 
+def round_nutritional_values(nutrition_info: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Round nutritional values to maximum 2 decimal places
+    
+    Args:
+        nutrition_info: Dictionary with nutritional information
+        
+    Returns:
+        Dictionary with rounded values
+    """
+    rounded_info = {}
+    for key, value in nutrition_info.items():
+        if isinstance(value, (int, float)):
+            # Round to 2 decimal places maximum
+            rounded_info[key] = round(value, 2)
+        else:
+            rounded_info[key] = value
+    return rounded_info
+
 # Nutritional database for common ingredients (per 100g)
 NUTRITIONAL_DATABASE = {
     # Vegetables
@@ -201,12 +220,12 @@ def get_nutritional_info(ingredient_name: str) -> Dict[str, Any]:
     
     # Try exact match first
     if ingredient_key in NUTRITIONAL_DATABASE:
-        return NUTRITIONAL_DATABASE[ingredient_key]
+        return round_nutritional_values(NUTRITIONAL_DATABASE[ingredient_key])
     
     # Try partial matches for common variations
     for key, value in NUTRITIONAL_DATABASE.items():
         if key in ingredient_key or ingredient_key in key:
-            return value
+            return round_nutritional_values(value)
     
     # Default nutritional info if not found
     return {
@@ -246,9 +265,9 @@ def calculate_nutritional_summary(results: list) -> Dict[str, float]:
             total_fat += nutrition['fat']
     
     return {
-        "total_calories": round(total_calories, 1),
-        "total_protein": round(total_protein, 1),
-        "total_carbs": round(total_carbs, 1),
-        "total_fat": round(total_fat, 1),
+        "total_calories": round(total_calories, 2),
+        "total_protein": round(total_protein, 2),
+        "total_carbs": round(total_carbs, 2),
+        "total_fat": round(total_fat, 2),
         "ingredients_count": len(results)
     }
