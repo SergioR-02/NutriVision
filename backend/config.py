@@ -2,10 +2,18 @@
 Configuration settings for the NutriVision AI backend
 """
 import os
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde .env
+load_dotenv()
 
 # API Configuration
-GOOGLE_API_KEY = "AIzaSyDkKkfyNQ9msc72Aio4h4VhzIcpxusAHuM"
-os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    raise ValueError(
+        "GOOGLE_API_KEY no encontrada. "
+        "Por favor configura tu archivo .env basándote en .env.example"
+    )
 
 # Image Processing Configuration
 TARGET_IMAGE_SIZE = 800
@@ -16,8 +24,11 @@ BBOX_OFFSET_Y = 20  # Píxeles hacia abajo
 APP_TITLE = "NutriVision AI API"
 APP_DESCRIPTION = "API para detección de ingredientes y análisis nutricional usando Google Gemini AI"
 APP_VERSION = "2.0.0"
-HOST = "0.0.0.0"
-PORT = 8000
+HOST = os.getenv("HOST", "0.0.0.0")
+PORT = int(os.getenv("PORT", "8000"))
+
+# Debug mode
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # CORS Configuration
 ALLOWED_ORIGINS = [

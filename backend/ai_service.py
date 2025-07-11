@@ -22,12 +22,16 @@ class GeminiAIService:
     def _initialize_gemini(self):
         """Initialize Gemini AI model"""
         try:
+            if not GOOGLE_API_KEY:
+                raise ValueError("GOOGLE_API_KEY no configurada")
+            
             os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
             self.gemini_pro = GoogleGenAI(model_name="gemini-1.5-flash")
             print("✅ Gemini AI initialized successfully")
         except Exception as e:
             print(f"⚠️ Warning: Could not initialize Gemini AI: {e}")
             print("The server will start but API calls may fail until connection is restored")
+            print("💡 Tip: Asegúrate de configurar tu archivo .env con GOOGLE_API_KEY")
             self.gemini_pro = None
     
     def is_available(self) -> bool:

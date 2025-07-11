@@ -1,0 +1,57 @@
+# Variables de entorno y configuración sensible
+.env
+.env.local
+.env.production
+.env.staging
+
+# Backend Python
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.Python
+backend/venv/
+backend/ENV/
+backend/env/
+backend/*.log
+
+# Frontend Node.js
+project/node_modules/
+project/dist/
+project/build/
+project/.vite/
+project/.cache/
+project/npm-debug.log*
+project/yarn-debug.log*
+project/yarn-error.log*
+project/.DS_Store
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Logs generales
+*.log
+logs/
+
+# Archivos temporales
+*.tmp
+*.temp
+temp/
+
+# Testing y coverage
+.coverage
+.pytest_cache/
+htmlcov/
+coverage/
+
+# Distribuciones
+dist/
+build/
+*.egg-info/
