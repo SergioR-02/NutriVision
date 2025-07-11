@@ -9,6 +9,22 @@ interface DetectionResultsProps {
   onBack: () => void;
 }
 
+// Format number to maximum 2 decimal places
+const formatNumber = (value: string | number): string => {
+  if (typeof value === 'string') {
+    const num = parseFloat(value);
+    if (isNaN(num)) return '0';
+    return (Math.round(num * 100) / 100).toString();
+  }
+  if (typeof value !== 'number' || isNaN(value)) return '0';
+  return (Math.round(value * 100) / 100).toString();
+};
+
+interface DetectionResultsProps {
+  result: LegacyDetectionResult;
+  onBack: () => void;
+}
+
 export default function DetectionResults({ result, onBack }: DetectionResultsProps) {
   const [imageZoom, setImageZoom] = useState(1);
   const [selectedIngredient, setSelectedIngredient] = useState<string | null>(null);
@@ -172,7 +188,7 @@ export default function DetectionResults({ result, onBack }: DetectionResultsPro
                   <div className="flex-1">
                     <h4 className="font-medium text-gray-900">{ingredient.name}</h4>
                     <p className="text-sm text-gray-600">
-                      {ingredient.nutrition.calories} kcal • Confianza: {ingredient.confidence}%
+                      {formatNumber(ingredient.nutrition.calories)} kcal • Confianza: {ingredient.confidence}%
                     </p>
                   </div>
                   <div className="flex items-center gap-2">
@@ -198,27 +214,27 @@ export default function DetectionResults({ result, onBack }: DetectionResultsPro
                         <div className="grid grid-cols-2 gap-3">
                           <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                             <span className="text-sm text-gray-600">Calorías:</span>
-                            <span className="font-medium text-red-600">{ingredient.nutrition.calories} kcal</span>
+                            <span className="font-medium text-red-600">{formatNumber(ingredient.nutrition.calories)} kcal</span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                             <span className="text-sm text-gray-600">Proteínas:</span>
-                            <span className="font-medium text-blue-600">{ingredient.nutrition.protein}g</span>
+                            <span className="font-medium text-blue-600">{formatNumber(ingredient.nutrition.protein)}g</span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                             <span className="text-sm text-gray-600">Carbohidratos:</span>
-                            <span className="font-medium text-green-600">{ingredient.nutrition.carbs}g</span>
+                            <span className="font-medium text-green-600">{formatNumber(ingredient.nutrition.carbs)}g</span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                             <span className="text-sm text-gray-600">Grasas:</span>
-                            <span className="font-medium text-orange-600">{ingredient.nutrition.fat}g</span>
+                            <span className="font-medium text-orange-600">{formatNumber(ingredient.nutrition.fat)}g</span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                             <span className="text-sm text-gray-600">Fibra:</span>
-                            <span className="font-medium text-purple-600">{ingredient.nutrition.fiber}g</span>
+                            <span className="font-medium text-purple-600">{formatNumber(ingredient.nutrition.fiber)}g</span>
                           </div>
                           <div className="flex justify-between items-center p-2 bg-gray-50 rounded">
                             <span className="text-sm text-gray-600">Azúcares:</span>
-                            <span className="font-medium text-pink-600">{ingredient.nutrition.sugar}g</span>
+                            <span className="font-medium text-pink-600">{formatNumber(ingredient.nutrition.sugar)}g</span>
                           </div>
                         </div>
                       </div>
@@ -226,7 +242,7 @@ export default function DetectionResults({ result, onBack }: DetectionResultsPro
                       <div className="p-3 bg-blue-50 rounded-lg">
                         <h6 className="font-medium text-blue-900 mb-1">✨ Información adicional:</h6>
                         <p className="text-sm text-blue-800">
-                          ID: {ingredient.id} • Área detectada: {ingredient.position.width.toFixed(1)}% × {ingredient.position.height.toFixed(1)}%
+                          ID: {ingredient.id} • Área detectada: {formatNumber(ingredient.position.width)}% × {formatNumber(ingredient.position.height)}%
                         </p>
                       </div>
                     </div>

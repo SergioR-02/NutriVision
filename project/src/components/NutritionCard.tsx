@@ -5,6 +5,17 @@ interface NutritionCardProps {
   title: string;
 }
 
+// Format number to maximum 2 decimal places
+const formatNumber = (value: string | number): string => {
+  if (typeof value === 'string') {
+    const num = parseFloat(value);
+    if (isNaN(num)) return '0';
+    return (Math.round(num * 100) / 100).toString();
+  }
+  if (typeof value !== 'number' || isNaN(value)) return '0';
+  return (Math.round(value * 100) / 100).toString();
+};
+
 export default function NutritionCard({ nutrition, title }: NutritionCardProps) {
   const nutritionItems = [
     { label: 'Calorías', value: nutrition.calories, unit: 'kcal', color: 'text-red-600' },
@@ -25,7 +36,7 @@ export default function NutritionCard({ nutrition, title }: NutritionCardProps) 
           <div key={index} className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
             <span className="text-sm font-medium text-gray-700">{item.label}</span>
             <span className={`text-sm font-bold ${item.color}`}>
-              {item.value} {item.unit}
+              {formatNumber(item.value)} {item.unit}
             </span>
           </div>
         ))}
