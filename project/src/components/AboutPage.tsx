@@ -4,7 +4,7 @@ import FeaturesSection from './FeaturesSection';
 
 export default function AboutPage() {
   const techStack = [
-    { category: 'Frontend', items: 'React 18, Vite, CSS Moderno', color: 'bg-blue-100 text-blue-800' },
+    { category: 'Frontend', items: 'React 18, Vite, Tailwind', color: 'bg-blue-100 text-blue-800' },
     { category: 'Backend', items: 'FastAPI, Python 3.10', color: 'bg-green-100 text-green-800' },
     { category: 'Inteligencia Artificial', items: 'Google Gemini AI, OpenCV', color: 'bg-purple-100 text-purple-800' }
   ];
@@ -19,7 +19,7 @@ export default function AboutPage() {
           </div>
           <h1 className="text-3xl font-bold">Sobre NutriVision AI</h1>
         </div>
-        <p className="text-lg text-white/90 max-w-3xl">
+        <p className="text-lg text-white/90 max-w-9xl">
           NutriVision AI es una aplicación de detección de ingredientes y análisis nutricional de nueva generación 
           impulsada por el modelo Gemini de Google. Nuestra aplicación puede identificar ingredientes en platos de comida 
           y proporcionar información nutricional detallada con alta precisión y velocidad.
