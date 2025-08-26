@@ -1,14 +1,38 @@
 # 🥗 NutriVision AI - Análisis Nutricional con IA
 
-> **Examen Final de Computación Visual 2025-1**  
 > **Universidad Nacional de Colombia**
+
+---
+
+## **🎞️ Demostración Visual Detallada**
+
+#### **📸 GIF 1: Interfaz de Usuario y Carga de Imágenes**
+![Carga de Imagen](./resultados/visualizacion_interfaz.gif)
+*Demostración del flujo completo de la interfaz web, incluyendo la carga de imágenes, validación de formatos y feedback visual al usuario durante el proceso de upload.*
+
+**Características mostradas:**
+- ✅ Interfaz responsiva con visualización 3D del modelo de sandwich
+- ✅ Sistema de drag & drop para carga de imágenes
+- ✅ Validación automática de formatos soportados (JPG, PNG, WebP)
+- ✅ Indicadores de estado de conexión con el backend
+- ✅ Navegación fluida entre secciones de la aplicación
+
+#### **🔍 GIF 2: Procesamiento y Detección en Tiempo Real**
+![Detección en Proceso](./resultados/funcionamiento.gif)
+*Funcionamiento del sistema de detección de ingredientes, mostrando el pipeline completo desde la imagen original hasta los resultados con bounding boxes y análisis nutricional.*
+
+**Funcionalidades demostradas:**
+- ✅ Procesamiento de imagen con OpenCV (redimensionado y optimización)
+- ✅ Integración con Google Gemini AI para detección de ingredientes
+- ✅ Generación automática de bounding boxes con coordenadas precisas
+- ✅ Extracción de información nutricional de la base de datos
+- ✅ Visualización de resultados con etiquetas descriptivas
 
 ---
 
 ## 👨‍💻 **Datos del Estudiante**
 
 - **Nombre Completo:** Sergio Alejandro Ruiz Hurtado  
-- **Número de Documento:** 1015992343  
 - **Correo Institucional:** seruizh@unal.edu.co  
 
 ---
@@ -342,32 +366,6 @@ Flujo de Datos:
    ```
 
 ---
-
-## 📊 **Evidencia de Funcionamiento**
-
-### **🎞️ Demostración Visual Detallada**
-
-#### **📸 GIF 1: Interfaz de Usuario y Carga de Imágenes**
-![Carga de Imagen](./resultados/visualizacion_interfaz.gif)
-*Demostración del flujo completo de la interfaz web, incluyendo la carga de imágenes, validación de formatos y feedback visual al usuario durante el proceso de upload.*
-
-**Características mostradas:**
-- ✅ Interfaz responsiva con visualización 3D del modelo de sandwich
-- ✅ Sistema de drag & drop para carga de imágenes
-- ✅ Validación automática de formatos soportados (JPG, PNG, WebP)
-- ✅ Indicadores de estado de conexión con el backend
-- ✅ Navegación fluida entre secciones de la aplicación
-
-#### **🔍 GIF 2: Procesamiento y Detección en Tiempo Real**
-![Detección en Proceso](./resultados/funcionamiento.gif)
-*Funcionamiento del sistema de detección de ingredientes, mostrando el pipeline completo desde la imagen original hasta los resultados con bounding boxes y análisis nutricional.*
-
-**Funcionalidades demostradas:**
-- ✅ Procesamiento de imagen con OpenCV (redimensionado y optimización)
-- ✅ Integración con Google Gemini AI para detección de ingredientes
-- ✅ Generación automática de bounding boxes con coordenadas precisas
-- ✅ Extracción de información nutricional de la base de datos
-- ✅ Visualización de resultados con etiquetas descriptivas
 
 ### **📋 Observaciones Técnicas y Áreas de Mejora**
 
